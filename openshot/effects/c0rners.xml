@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE openshot-effect>
+<effect>
+	<title translatable="True">Perspective</title>
+	<description translatable="True">Four corners geometry engine</description>
+	<icon>hqdn3d.png</icon>
+	<category>Video</category>
+	<service>frei0r.c0rners</service>
+
+        <param name="0" type="spinner" title="Corner 1 X" description="X coordinate of corner 1">
+                <min>0</min>
+                <max>1</max>
+                <step>0.01</step>
+                <default>0.33</default>
+        </param>
+
+        <param name="1" type="spinner" title="Corner 1 Y" description="Y coordinate of corner 1">
+                <min>0</min>
+                <max>1</max>
+                <step>0.01</step>
+                <default>0.25</default>
+        </param>
+
+        <param name="2" type="spinner" title="Corner 2 X" description="X coordinate of corner 2">
+                <min>0</min>
+                <max>1</max>
+                <step>0.01</step>
+                <default>0.67</default>
+        </param>
+
+        <param name="3" type="spinner" title="Corner 2 Y" description="description: Y coordinate of corner 2">
+                <min>0</min>
+                <max>1</max>
+                <step>0.01</step>
+                <default>0.32</default>
+        </param>
+
+        <param name="4" type="spinner" title="Corner 3 X" description="X coordinate of corner 3">
+                <min>0</min>
+                <max>1</max>
+                <step>0.01</step>
+                <default>0.67</default>
+        </param>
+
+        <param name="5" type="spinner" title="Corner 3 Y" description="Y coordinate of corner 3">
+                <min>0</min>
+                <max>1</max>
+                <step>0.01</step>
+                <default>0.73</default>
+        </param>
+
+        <param name="6" type="spinner" title="Corner 4 X" description="X coordinate of corner 4">
+                <min>0</min>
+                <max>1</max>
+                <step>0.01</step>
+                <default>0.33</default>
+        </param>
+
+        <param name="7" type="spinner" title="Corner 4 Y" description="Y coordinate of corner 4">
+                <min>0</min>
+                <max>1</max>
+                <step>0.01</step>
+                <default>0.75</default>
+        </param>
+
+        <param name="8" type="checkbox" title="Enable Stretch" description="Enable stretching">
+                <min>0</min>
+                <max>1</max>
+                <default>0</default>
+        </param>
+
+        <param name="9" type="spinner" title="Stretch X" description="Amount of stretching in X direction">
+                <min>0</min>
+                <max>1</max>
+                <step>0.01</step>
+                <default>0.5</default>
+        </param>
+
+        <param name="10" type="spinner" title="Stretch Y" description="Amount of stretching in Y direction">
+                <min>0</min>
+                <max>1</max>
+                <step>0.01</step>
+                <default>0.5</default>
+        </param>
+
+        <param name="11" type="spinner" title="Interpolator" description="Quality of interpolation">
+                <min>0</min>
+                <max>1</max>
+                <step>0.01</step>
+                <default>0.16</default>
+        </param>
+
+        <param name="12" type="checkbox" title="Transparent Background" description="Makes background transparent">
+                <min>0</min>
+                <max>1</max>
+                <default>0</default>
+        </param>
+
+        <param name="13" type="spinner" title="Feather Alpha" description="Makes smooth transition into transparent">
+                <min>0</min>
+                <max>1</max>
+                <step>0.01</step>
+                <default>0.01</default>
+        </param>
+
+        <param name="14" type="spinner" title="Alpha operation" description="Alpha operation">
+                <min>0</min>
+                <max>1</max>
+                <step>0.01</step>
+                <default>0</default>
+        </param>
+</effect>
