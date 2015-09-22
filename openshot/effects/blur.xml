@@ -9,13 +9,15 @@
 	
 	<param name="start" type="hscale" title="Start" description=""> 
 		<min>1.0</min> 
-		<max>200</max> 
+		<max>200</max>
+		<step>1</step> 
 		<default>50</default> 
 	</param> 
  
 	<param name="end" type="hscale" title="End" description=""> 
 		<min>1.0</min> 
-		<max>200</max> 
+		<max>200</max>
+		<step>1</step> 
 		<default>50</default> 
 	</param> 
 
