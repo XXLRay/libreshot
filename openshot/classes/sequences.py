@@ -312,12 +312,14 @@ class sequence:
 
 		# resize the canvas height and width
 		new_size_of_middle = Size_Of_Middle + 200
-		if new_size_of_middle > 32000:
-			# do not let the size of the canvas exceed 32,000... or cairo will throw an error
-			new_size_of_middle = 32000
-
+		
 		canvas_timeline.set_bounds (0, 0, new_size_of_middle, timeline_heigth)
-		self.project.form.hscrollbar2.set_range(0, new_size_of_middle)
+		#1.02 is a fudge factor to make up for rounding errors
+		#without this, the scrollbar range will be just a little smaller than the
+		#size of the canvas_timeline and you wouldn't be able to scroll all the way to the end		
+		#I don't know why this changed from 1.4.3 to 1.4.4 - in 1.4.3 I didn't need to do this.
+		#My best guess is that the length is calculated differently than in 1.4.3
+		self.project.form.hscrollbar2.set_range(0, new_size_of_middle*1.02)
 		self.project.form.vscrollbar2.set_range(0, timeline_heigth)
 		self.project.form.on_hscrollbar2_value_changed(self.project.form.hscrollbar2)
 
@@ -391,9 +393,7 @@ class sequence:
 		# loop through each tick mark
 		number_of_ticks = int(self.length / self.scale)
 		ruler_pixels = ((float(self.length) / float(self.scale)) * self.tick_pixels)
-		if ruler_pixels > 32000:
-			ruler_pixels = 32000
-
+		
 		tick = 0
 		end_of_timeline = False
 
