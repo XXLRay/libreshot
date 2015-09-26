@@ -59,7 +59,6 @@ params = {
 			'color' : [0.8,0.8,0.8],
 			'alpha' : 1.0,
 			'alpha_mode' : 'TRANSPARENT',
-			
 			'output_path' : '/tmp/',
 			'fps' : 24,
 			'quality' : 90,
@@ -126,13 +125,12 @@ except:
 		bpy.context.scene.render.image_settings.color_mode = "RGB"
 	else:
 		bpy.context.scene.render.image_settings.color_mode = params["color_mode"]
-		
 # Set background transparency (SKY or TRANSPARENT)
 try:
-	bpy.context.scene.render.alpha_mode = params["alpha_mode"]
+    bpy.context.scene.render.alpha_mode = params["alpha_mode"]
 except:
-	pass
-		
+    pass
+
 #bpy.data.worlds[0].horizon_color = params["horizon_color"]
 bpy.context.scene.render.resolution_x = params["resolution_x"]
 bpy.context.scene.render.resolution_y = params["resolution_y"]

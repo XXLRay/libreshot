@@ -28,6 +28,7 @@ import pango
 import webbrowser
 import subprocess
 import shutil
+from widgets import openshotwidgets
 
 import classes.effect as effect
 from classes import files, lock, messagebox, open_project, project, timeline, tree, video, inputbox, av_formats, clip
@@ -2450,7 +2451,7 @@ class frmMain(SimpleGtkBuilderApp):
 			
 		# get the middle of the window
 		screen_width = (self.width / 2) - 100
-			
+		
 		if playhead_pixels > (current_scroll_pixels + screen_width):
 			# scroll to last scroll position
 			self.hscrollbar2.set_value(playhead_pixels - screen_width)

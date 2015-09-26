@@ -1694,11 +1694,11 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkHScrollbar" id="hscrollbar2">
+                          <object class="Extended_Scrollbar" id="hscrollbar2">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="adjustment">adjustment1</property>
-                            <signal name="value-changed" handler="on_hscrollbar2_value_changed" swapped="no"/>
+                            <signal name="value-changed" handler="on_hscrollbar2_value_changed"/>
                           </object>
                           <packing>
                             <property name="expand">True</property>

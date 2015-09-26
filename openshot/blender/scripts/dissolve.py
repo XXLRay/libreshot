@@ -138,12 +138,7 @@ def createDissolveText(title,extrude,bevel_depth,spacemode,textsize,width,font):
 	ActiveObjectText.modifiers['Remesh'].octree_depth = 9 #10 best quality but vertices number too high
 	ActiveObjectText.modifiers['Remesh'].scale=0.99
 	ActiveObjectText.modifiers['Remesh'].mode='SMOOTH'
-	
-	try:
-		ActiveObjectText.modifiers['Remesh'].remove_disconnected_pieces=False
-	except:
-		ActiveObjectText.modifiers['Remesh'].use_remove_disconnected=False
-		
+	ActiveObjectText.modifiers['Remesh'].use_remove_disconnected=False
 	#apply this mofifier
 	bpy.ops.object.modifier_apply(apply_as='DATA', modifier="Remesh")
 	
@@ -172,12 +167,8 @@ def createDissolveText(title,extrude,bevel_depth,spacemode,textsize,width,font):
 	ActiveObjectText.particle_systems['ParticleSystem'].settings.render_type='NONE'
 	ActiveObjectText.particle_systems['ParticleSystem'].settings.draw_method='DOT'
 	ActiveObjectText.particle_systems['ParticleSystem'].settings.effector_weights.gravity = 0
+	ActiveObjectText.particle_systems['ParticleSystem'].settings.use_adaptive_subframes = True
 	ActiveObjectText.particle_systems['ParticleSystem'].settings.courant_target = 0.2
-	
-	try:
-		ActiveObjectText.particle_systems['ParticleSystem'].settings.adaptive_subframes = True
-	except:
-		ActiveObjectText.particle_systems['ParticleSystem'].settings.use_adaptive_subframes = True
 
 	bpy.ops.object.select_all(action='DESELECT')
 
@@ -297,7 +288,6 @@ params = {
 			'color' : [0.8,0.8,0.8],
 			'alpha' : 1.0,
 			'alpha_mode' : 'TRANSPARENT',
-			
 			'output_path' : '/tmp/',
 			'fps' : 24,
 			'quality' : 90,
@@ -364,13 +354,11 @@ try:
 except:
 	bpy.context.scene.render.image_settings.file_format = params["file_format"]
 	bpy.context.scene.render.image_settings.color_mode = params["color_mode"]
-	
 # Set background transparency (SKY or TRANSPARENT)
 try:
-	bpy.context.scene.render.alpha_mode = params["alpha_mode"]
+    bpy.context.scene.render.alpha_mode = params["alpha_mode"]
 except:
-	pass
-	
+    pass
 bpy.data.worlds[0].horizon_color = params["horizon_color"]
 bpy.context.scene.render.resolution_x = params["resolution_x"]
 bpy.context.scene.render.resolution_y = params["resolution_y"]
