@@ -16,7 +16,7 @@
 #	You should have received a copy of the GNU General Public License
 #	along with OpenShot Video Editor.  If not, see <http://www.gnu.org/licenses/>.
 
-VERSION             = "1.4.4~alpha1"
+VERSION             = "1.4.4~alpha1+"
 DATE                = "20130602800000"
 NAME                = 'openshot'
 GPL_VERSION         = '3'
