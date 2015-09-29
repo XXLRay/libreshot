@@ -895,7 +895,7 @@ class frmClipProperties(SimpleGtkBuilderApp):
 				
 		if speed_multiplier < original_speed:
 			# clip is longer now (keep the short version)
-			clip_object.end_time = clip_object.start_time + original_length
+			clip_object.end_time = clip_object.start_time + original_length / speed_multiplier
 		else:
 			# clip is shorter
 			clip_object.end_time = new_end_time

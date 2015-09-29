@@ -1,3 +1,4 @@
+
 #!/bin/bash
 
 echo "Kernel"
@@ -12,26 +13,41 @@ echo "OS Version"
 echo "------"
 cat /etc/issue.net
 echo ""
-echo "ffmpeg Version"
+echo "ffmpeg/avconv Version"
 echo "------"
 ffmpeg -version
+avconv -version
 echo ""
 echo "openshot Version"
 echo "------"
 dpkg-query -W openshot
 echo ""
-echo "ffmpeg Version"
+echo "ffmpeg/avconv Version"
 echo "------"
 dpkg-query -W ffmpeg
+dpkg-query -W libav-tools
 echo ""
 echo "melt / mlt Version"
 echo "------"
-melt --version |grep MLT
+melt --version |grep melt
 echo ""
-echo "Version libreria MLT"
+echo "MLT libraries"
 echo "------"
 dpkg -l | grep libmlt
 echo ""
-echo "Version libreria libav"
+echo "libav libraries"
 echo "------"
-dpkg -l |grep libav
+dpkg -l |grep libav |grep -v Avahi
+echo "------"
+echo "Blender version"
+echo "------"
+blender --version |grep Blender
+echo "------"
+echo "frei0r plugins"
+echo "------"
+dpkg -l |grep frei0r
+echo "------"
+echo "available source packages"
+echo ""
+echo "------"
+dpkg -l | grep -- "-dev"
