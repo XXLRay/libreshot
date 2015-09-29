@@ -88,8 +88,8 @@ class frmClipProperties(SimpleGtkBuilderApp):
 		self.txtFileName.set_text(fname)
 		self.spinbtnStart.set_value(self.current_clip.position_on_track)
 		self.txtLength.set_text(_("{0} seconds").format(str(self.current_clip.length())))
-		self.txtIn.set_value(round(self.current_clip.start_time, 2))
 		self.txtOut.set_value(round(self.current_clip.end_time, 2))
+		self.txtIn.set_value(round(self.current_clip.start_time, 2))
 		self.txtAudioFadeInAmount.set_value(round(self.current_clip.audio_fade_in_amount, 2))
 		self.txtAudioFadeOutAmount.set_value(round(self.current_clip.audio_fade_out_amount, 2))
 		self.txtVideoFadeInAmount.set_value(round(self.current_clip.video_fade_in_amount, 2))
@@ -141,7 +141,7 @@ class frmClipProperties(SimpleGtkBuilderApp):
 		self.notebook1.set_current_page(initial_tab)
 		
 		# mark project as modified
-		# so that the real project is refreshed... even if these 
+		# so that the real project is refreshed... even if these
 		# preview changes are not accepted
 		self.project.set_project_modified(is_modified=True, refresh_xml=True)
 
@@ -182,7 +182,7 @@ class frmClipProperties(SimpleGtkBuilderApp):
 		
 		if real_effect:
 			# show the settings panel
-			self.vbox_effect_settings.set_property('visible', True) 
+			self.vbox_effect_settings.set_property('visible', True)
 			
 			# Clear Effect Edit Controls
 			self.clear_effect_controls()
@@ -206,7 +206,7 @@ class frmClipProperties(SimpleGtkBuilderApp):
 					# create spinner
 					adj = gtk.Adjustment(float(user_param_value), float(param.min), float(param.max), float(param.step), float(param.step), 0.0)
 					spinner = gtk.SpinButton(adj, float(param.step), int(param.digits))
-					# connect signal 
+					# connect signal
 					spinner.connect("value-changed", self.effect_spinner_changed, real_effect, param, unique_id)
 					# add to hbox
 					hbox.pack_start(spinner, expand=True, fill=True)
@@ -216,7 +216,7 @@ class frmClipProperties(SimpleGtkBuilderApp):
 					adj = gtk.Adjustment(float(user_param_value), float(param.min), float(param.max), float(param.step), float(param.step), 0.0)
 					hscale = gtk.HScale(adj)
 					hscale.set_digits(int(param.digits))
-					# connect signal 
+					# connect signal
 					hscale.connect("value-changed", self.effect_hscale_changed, real_effect, param, unique_id)
 					# add to hbox
 					hbox.pack_start(hscale, expand=True, fill=True)
@@ -350,7 +350,7 @@ class frmClipProperties(SimpleGtkBuilderApp):
 		child_index = 0
 		for hbox in self.vbox_effect_settings.get_children():
 			
-			if child_index > 0: 
+			if child_index > 0:
 				# get Label
 				label = hbox.get_children()[0]
 				label.set_text("")
@@ -377,7 +377,7 @@ class frmClipProperties(SimpleGtkBuilderApp):
 		
 		# hide settings if no effects found
 		#if not self.copy_of_clip.effects:
-		#	self.vbox_effect_settings.set_property('visible', False) 
+		#	self.vbox_effect_settings.set_property('visible', False)
 		#else:
 		# select last effect
 		if len(paths) == 1:
@@ -406,7 +406,7 @@ class frmClipProperties(SimpleGtkBuilderApp):
 	
 		
 	def on_frmClipProperties_window_state_event(self, widget, event, *args):
-		# determine if properties window is maximized or not 
+		# determine if properties window is maximized or not
 		
 		if event.changed_mask & gtk.gdk.WINDOW_STATE_MAXIMIZED:
 			if event.new_window_state & gtk.gdk.WINDOW_STATE_MAXIMIZED:
