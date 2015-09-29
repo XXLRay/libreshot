@@ -88,6 +88,7 @@ class frmClipProperties(SimpleGtkBuilderApp):
 		self.txtFileName.set_text(fname)
 		self.spinbtnStart.set_value(self.current_clip.position_on_track)
 		self.txtLength.set_text(_("{0} seconds").format(str(self.current_clip.length())))
+		# Out time needs to me loaded before in time otherwise the properties window doesn't remember a cut start time when re-opened
 		self.txtOut.set_value(round(self.current_clip.end_time, 2))
                 self.txtIn.set_value(round(self.current_clip.start_time, 2))
 		self.txtAudioFadeInAmount.set_value(round(self.current_clip.audio_fade_in_amount, 2))
