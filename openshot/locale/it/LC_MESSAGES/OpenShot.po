@@ -4724,6 +4724,14 @@ msgstr "Allarga dall'alto al basso"
 msgid "Hourglass 2"
 msgstr "Clessidra 2"
 
+#: openshot.xml:1138(para)
+msgid "Copy to start"
+msgstr "Copia su inizio"
+
+#: openshot.xml:1138(para)
+msgid "Copy to end"
+msgstr "Copia su fine"
+
 #~ msgid "2"
 #~ msgstr "2"
 

@@ -91,6 +91,58 @@
     <property name="value">1</property>
     <property name="step_increment">0.10000000000000001</property>
   </object>
+  <object class="GtkListStore" id="liststore1">
+    <columns>
+      <!-- column-name item -->
+      <column type="gchararray"/>
+    </columns>
+    <data>
+      <row>
+        <col id="0" translatable="yes">top</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">centre</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">bottom</col>
+      </row>
+    </data>
+  </object>
+  <object class="GtkListStore" id="liststore2">
+    <columns>
+      <!-- column-name item -->
+      <column type="gchararray"/>
+    </columns>
+    <data>
+      <row>
+        <col id="0" translatable="yes">left</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">centre</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">right</col>
+      </row>
+    </data>
+  </object>
+  <object class="GtkListStore" id="liststore3">
+    <columns>
+      <!-- column-name item -->
+      <column type="gchararray"/>
+    </columns>
+  </object>
+  <object class="GtkListStore" id="liststore4">
+    <columns>
+      <!-- column-name item -->
+      <column type="gchararray"/>
+    </columns>
+  </object>
+  <object class="GtkListStore" id="liststore5">
+    <columns>
+      <!-- column-name item -->
+      <column type="gchararray"/>
+    </columns>
+  </object>
   <object class="GtkDialog" id="frmClipProperties">
     <property name="can_focus">False</property>
     <property name="border_width">5</property>
@@ -119,7 +171,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="use_action_appearance">False</property>
                 <signal name="clicked" handler="on_btnCancel_clicked" swapped="no"/>
               </object>
               <packing>
@@ -134,7 +185,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="use_action_appearance">False</property>
                 <signal name="clicked" handler="on_btnClose_clicked" swapped="no"/>
               </object>
               <packing>
@@ -194,7 +244,6 @@
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
-                        <property name="use_action_appearance">False</property>
                         <signal name="clicked" handler="on_btnPlay_clicked" swapped="no"/>
                         <child>
                           <object class="GtkImage" id="imgPlay">
@@ -287,7 +336,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">False</property>
-                            <property name="use_action_appearance">False</property>
                             <property name="draw_indicator">True</property>
                           </object>
                           <packing>
@@ -302,7 +350,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">False</property>
-                            <property name="use_action_appearance">False</property>
                             <property name="draw_indicator">True</property>
                           </object>
                           <packing>
@@ -1086,6 +1133,22 @@
                         <property name="position">0</property>
                       </packing>
                     </child>
+                    <child>
+                      <object class="GtkButton" id="cpyValuesbutton1">
+                        <property name="label" translatable="yes">Copy to end</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">True</property>
+                        <signal name="button-press" handler="on_cpyValuesbutton1_clicked" swapped="no"/>
+                        <signal name="clicked" handler="on_cpyValuesbutton1_clicked" swapped="no"/>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">False</property>
+                        <property name="pack_type">end</property>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
                   </object>
                   <packing>
                     <property name="position">3</property>
@@ -1141,7 +1204,6 @@
                                         <property name="visible">True</property>
                                         <property name="can_focus">True</property>
                                         <property name="receives_default">False</property>
-                                        <property name="use_action_appearance">False</property>
                                         <property name="draw_indicator">True</property>
                                         <signal name="toggled" handler="on_chkAudioFadeIn_toggled" swapped="no"/>
                                       </object>
@@ -1155,7 +1217,6 @@
                                         <property name="visible">True</property>
                                         <property name="can_focus">True</property>
                                         <property name="receives_default">False</property>
-                                        <property name="use_action_appearance">False</property>
                                         <property name="draw_indicator">True</property>
                                         <signal name="toggled" handler="on_chkAudioFadeOut_toggled" swapped="no"/>
                                       </object>
@@ -1317,7 +1378,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">False</property>
-                            <property name="use_action_appearance">False</property>
                             <property name="draw_indicator">True</property>
                           </object>
                           <packing>
@@ -1330,7 +1390,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">False</property>
-                            <property name="use_action_appearance">False</property>
                             <property name="draw_indicator">True</property>
                           </object>
                           <packing>
@@ -1510,7 +1569,6 @@
                                         <property name="visible">True</property>
                                         <property name="can_focus">True</property>
                                         <property name="receives_default">False</property>
-                                        <property name="use_action_appearance">False</property>
                                         <property name="draw_indicator">True</property>
                                         <signal name="toggled" handler="on_chkVideoFadeIn_toggled" swapped="no"/>
                                       </object>
@@ -1521,7 +1579,6 @@
                                         <property name="visible">True</property>
                                         <property name="can_focus">True</property>
                                         <property name="receives_default">False</property>
-                                        <property name="use_action_appearance">False</property>
                                         <property name="draw_indicator">True</property>
                                         <signal name="toggled" handler="on_chkVideoFadeOut_toggled" swapped="no"/>
                                       </object>
@@ -1677,7 +1734,6 @@
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <property name="tooltip_text" translatable="yes">Add Effect</property>
-                                <property name="use_action_appearance">False</property>
                                 <property name="label" translatable="yes">toolbutton1</property>
                                 <property name="use_underline">True</property>
                                 <property name="stock_id">gtk-add</property>
@@ -1693,7 +1749,6 @@
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <property name="tooltip_text" translatable="yes">Remove Effect</property>
-                                <property name="use_action_appearance">False</property>
                                 <property name="label" translatable="yes">toolbutton2</property>
                                 <property name="use_underline">True</property>
                                 <property name="stock_id">gtk-remove</property>
@@ -1709,7 +1764,6 @@
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <property name="tooltip_text" translatable="yes">Move Effect Up</property>
-                                <property name="use_action_appearance">False</property>
                                 <property name="label" translatable="yes">toolbutton3</property>
                                 <property name="use_underline">True</property>
                                 <property name="stock_id">gtk-go-up</property>
@@ -1725,7 +1779,6 @@
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <property name="tooltip_text" translatable="yes">Move Effect Down</property>
-                                <property name="use_action_appearance">False</property>
                                 <property name="label" translatable="yes">toolbutton4</property>
                                 <property name="use_underline">True</property>
                                 <property name="stock_id">gtk-go-down</property>
@@ -1749,7 +1802,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">False</property>
-                            <property name="use_action_appearance">False</property>
                             <property name="draw_indicator">True</property>
                           </object>
                           <packing>
@@ -2071,59 +2123,6 @@
       <action-widget response="0">btnClose</action-widget>
     </action-widgets>
   </object>
-  <object class="GtkListStore" id="liststore1">
-    <columns>
-      <!-- column-name item -->
-      <column type="gchararray"/>
-    </columns>
-    <data>
-      <row>
-        <col id="0" translatable="yes">top</col>
-      </row>
-      <row>
-        <col id="0" translatable="yes">centre</col>
-      </row>
-      <row>
-        <col id="0" translatable="yes">bottom</col>
-      </row>
-    </data>
-  </object>
-  <object class="GtkListStore" id="liststore2">
-    <columns>
-      <!-- column-name item -->
-      <column type="gchararray"/>
-    </columns>
-    <data>
-      <row>
-        <col id="0" translatable="yes">left</col>
-      </row>
-      <row>
-        <col id="0" translatable="yes">centre</col>
-      </row>
-      <row>
-        <col id="0" translatable="yes">right</col>
-      </row>
-    </data>
-  </object>
-  <object class="GtkListStore" id="liststore3">
-    <columns>
-      <!-- column-name item -->
-      <column type="gchararray"/>
-    </columns>
-  </object>
-  <object class="GtkListStore" id="liststore4">
-    <columns>
-      <!-- column-name item -->
-      <column type="gchararray"/>
-    </columns>
-  </object>
-  <object class="GtkListStore" id="liststore5">
-    <columns>
-      <!-- column-name item -->
-      <column type="gchararray"/>
-    </columns>
-  </object>
-  <object class="GtkSizeGroup" id="sizegroup1"/>
   <object class="GtkSizeGroup" id="sizegroup2">
     <widgets>
       <widget name="label36"/>
@@ -2131,5 +2130,6 @@
       <widget name="label35"/>
     </widgets>
   </object>
+  <object class="GtkSizeGroup" id="sizegroup1"/>
   <object class="GtkSizeGroup" id="sizegroup3"/>
 </interface>

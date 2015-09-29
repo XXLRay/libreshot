@@ -257,7 +257,7 @@ class frmClipProperties(SimpleGtkBuilderApp):
 				
 				# increment param index
 				param_index = param_index + 1
-				
+
 	def get_clip_effect(self, unique_id):
 		""" find the effect object on the clip... that matches the service string. """
 		# Loop through all effects
@@ -597,10 +597,14 @@ class frmClipProperties(SimpleGtkBuilderApp):
 			# get start keyframe
 			self.current_keyframe = "start"
 			keyframe = self.keyframes[self.current_keyframe]
+			cpyValues_label = _("Copy to end")
+			self.cpyValuesbutton1.set_label(cpyValues_label)
 		else:
 			# get end keyframe
 			self.current_keyframe = "end"
 			keyframe = self.keyframes[self.current_keyframe]
+			cpyValues_label = _("Copy to start")
+			self.cpyValuesbutton1.set_label(cpyValues_label)
 
 		# update keyframe widgets
 		self.txtHeight.set_value(float(keyframe.height))
@@ -610,6 +614,34 @@ class frmClipProperties(SimpleGtkBuilderApp):
 		self.scaleAlpha.set_value(keyframe.alpha * 100)
 
 		
+	def on_cpyValuesbutton1_clicked(self, widget, *args):
+		# get correct gettext method
+		_ = self._
+				
+		print "on_cpyValuesbutton1_clicked"
+		keyframe = self.keyframes[self.current_keyframe]
+		local_height = keyframe.height
+		local_width = keyframe.width
+		local_x = keyframe.x
+		local_y = keyframe.y
+		local_alpha = keyframe.alpha
+		
+		if self.current_keyframe == "start":
+			# update keyframe widgets
+			self.keyframes["end"].height = local_height
+			self.keyframes["end"].width = local_width
+			self.keyframes["end"].x = local_x
+			self.keyframes["end"].y = local_y
+			self.keyframes["end"].alpha = local_alpha
+		else:
+			# update keyframe widgets
+			self.keyframes["start"].height = local_height
+			self.keyframes["start"].width = local_width
+			self.keyframes["start"].x = local_x
+			self.keyframes["start"].y = local_y
+			self.keyframes["start"].alpha = local_alpha
+
+
 	def on_cboSimpleSpeed_changed(self, widget, *args):
 		
 		# get correct gettext method
