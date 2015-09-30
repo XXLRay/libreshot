@@ -627,19 +627,16 @@ class frmClipProperties(SimpleGtkBuilderApp):
 		local_alpha = keyframe.alpha
 		
 		if self.current_keyframe == "start":
-			# update keyframe widgets
-			self.keyframes["end"].height = local_height
-			self.keyframes["end"].width = local_width
-			self.keyframes["end"].x = local_x
-			self.keyframes["end"].y = local_y
-			self.keyframes["end"].alpha = local_alpha
+			dest_edge = "end"
 		else:
-			# update keyframe widgets
-			self.keyframes["start"].height = local_height
-			self.keyframes["start"].width = local_width
-			self.keyframes["start"].x = local_x
-			self.keyframes["start"].y = local_y
-			self.keyframes["start"].alpha = local_alpha
+			dest_edge = "start"
+
+		# update dest_edge keyframe
+		self.keyframes[dest_edge].height = local_height
+		self.keyframes[dest_edge].width = local_width
+		self.keyframes[dest_edge].x = local_x
+		self.keyframes[dest_edge].y = local_y
+		self.keyframes[dest_edge].alpha = local_alpha
 
 
 	def on_cboSimpleSpeed_changed(self, widget, *args):
