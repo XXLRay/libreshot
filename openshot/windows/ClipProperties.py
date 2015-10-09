@@ -70,19 +70,11 @@ class frmClipProperties(SimpleGtkBuilderApp):
 			# append profile to list
 			self.cboDirection.append_text(option)
 			
-		# add items to direction combo
-		options = [_("Start of Clip"), _("End of Clip")]
-		# loop through export to options
-		for option in options:
-			# append profile to list
-			self.cboKeyFrame.append_text(option)
-		
 		# get file name
 		(dirName, fname) = os.path.split(self.current_clip.file_object.name)
 		
 		# get a local keyframe collection
 		self.keyframes = copy.deepcopy(self.current_clip.keyframes)
-		self.current_keyframe = ""
 		
 		# init the default properties
 		self.txtFileName.set_text(fname)
@@ -116,8 +108,8 @@ class frmClipProperties(SimpleGtkBuilderApp):
 		self.chkEnableVideo.set_active(self.current_clip.play_video)
 		self.chkEnableAudio.set_active(self.current_clip.play_audio)
 		self.set_direction_dropdown()
-		self.set_keyframe_dropdown()
 		self.set_speed_dropdown()
+		self.set_StartEnd_values()
 		
 		# Hide the speed tab, if this is an image
 		if self.current_clip.file_object.file_type == "video":
@@ -146,7 +138,6 @@ class frmClipProperties(SimpleGtkBuilderApp):
 		# preview changes are not accepted
 		self.project.set_project_modified(is_modified=True, refresh_xml=True)
 
-		
 	def restore_window_size(self):
 		#default the form as not maximized
 		self.is_maximized = False
@@ -553,91 +544,105 @@ class frmClipProperties(SimpleGtkBuilderApp):
 		# reset the speed to 1.0
 		self.sliderVolume.set_value(100)		
 
-	def on_txtHeight_value_changed(self, widget, *args):
-		print "on_txtHeight_value_changed"
+	def on_txtHeightStart_value_changed(self, widget, *args):
+		print "on_txtHeightStart_value_changed"
 		
 		# update property
-		self.keyframes[self.current_keyframe].height = self.txtHeight.get_value()
+		self.keyframes["start"].height = self.txtHeightStart.get_value()
 		
-	def on_txtWidth_value_changed(self, widget, *args):
-		print "on_txtWidth_value_changed"
-		
-		# update property
-		self.keyframes[self.current_keyframe].width = self.txtWidth.get_value()
-		
-	def on_txtX_value_changed(self, widget, *args):
-		print "on_txtX_value_changed"
+	def on_txtWidthStart_value_changed(self, widget, *args):
+		print "on_txtWidthStart_value_changed"
 		
 		# update property
-		self.keyframes[self.current_keyframe].x = self.txtX.get_value()
+		self.keyframes["start"].width = self.txtWidthStart.get_value()
 		
-	def on_txtY_value_changed(self, widget, *args):
-		print "on_txtY_value_changed"
-		
-		# update property
-		self.keyframes[self.current_keyframe].y = self.txtY.get_value()
-		
-	def on_txtAlpha_value_changed(self, widget, *args):
-		print "on_txtAlpha_value_changed"
+	def on_txtXStart_value_changed(self, widget, *args):
+		print "on_txtXStart_value_changed"
 		
 		# update property
-		self.keyframes[self.current_keyframe].alpha = float(self.scaleAlpha.get_value()) / 100.0
+		self.keyframes["start"].x = self.txtXStart.get_value()
 		
-
-	def on_cboKeyFrame_changed(self, widget, *args):
+	def on_txtYStart_value_changed(self, widget, *args):
+		print "on_txtYStart_value_changed"
 		
-		# get correct gettext method
-		_ = self._
+		# update property
+		self.keyframes["start"].y = self.txtYStart.get_value()
 		
-		print "on_cboKeyFrame_changed"
-		localcboKeyFrame = self.cboKeyFrame.get_active_text().lower()
-		keyframe = None
+	def on_txtAlphaStart_value_changed(self, widget, *args):
+		print "on_txtAlphaStart_value_changed"
 		
-		if localcboKeyFrame == _("Start of Clip").lower():
-			# get start keyframe
-			self.current_keyframe = "start"
-			keyframe = self.keyframes[self.current_keyframe]
-			cpyValues_label = _("Copy to end")
-			self.cpyValuesbutton1.set_label(cpyValues_label)
-		else:
-			# get end keyframe
-			self.current_keyframe = "end"
-			keyframe = self.keyframes[self.current_keyframe]
-			cpyValues_label = _("Copy to start")
-			self.cpyValuesbutton1.set_label(cpyValues_label)
-
-		# update keyframe widgets
-		self.txtHeight.set_value(float(keyframe.height))
-		self.txtWidth.set_value(float(keyframe.width))
-		self.txtX.set_value(float(keyframe.x))
-		self.txtY.set_value(float(keyframe.y))
-		self.scaleAlpha.set_value(keyframe.alpha * 100)
-
+		# update property
+		self.keyframes["start"].alpha = float(self.scaleAlphaStart.get_value()) / 100.0
+				
+	def on_txtHeightEnd_value_changed(self, widget, *args):
+		print "on_txtHeightEnd_value_changed"
 		
-	def on_cpyValuesbutton1_clicked(self, widget, *args):
+		# update property
+		self.keyframes["end"].height = self.txtHeightEnd.get_value()
+		
+	def on_txtWidthEnd_value_changed(self, widget, *args):
+		print "on_txtWidthEnd_value_changed"
+		
+		# update property
+		self.keyframes["end"].width = self.txtWidthEnd.get_value()
+		
+	def on_txtXEnd_value_changed(self, widget, *args):
+		print "on_txtXEnd_value_changed"
+		
+		# update property
+		self.keyframes["end"].x = self.txtXEnd.get_value()
+		
+	def on_txtYEnd_value_changed(self, widget, *args):
+		print "on_txtYEnd_value_changed"
+		
+		# update property
+		self.keyframes["end"].y = self.txtYEnd.get_value()
+		
+	def on_txtAlphaEnd_value_changed(self, widget, *args):
+		print "on_txtAlphaEnd_value_changed"
+		
+		# update property
+		self.keyframes["end"].alpha = float(self.scaleAlphaEnd.get_value()) / 100.0
+				
+	def cpyButton(self, widget_label):
 		# get correct gettext method
 		_ = self._
 				
-		print "on_cpyValuesbutton1_clicked"
-		keyframe = self.keyframes[self.current_keyframe]
+		# get wich button
+		if widget_label == ">>":
+			source_edge = "start"
+			dest_edge = "end"
+		else:
+			source_edge = "end"
+			dest_edge = "start"
+
+		# read clip start values
+		keyframe = self.keyframes[source_edge]
 		local_height = keyframe.height
 		local_width = keyframe.width
 		local_x = keyframe.x
 		local_y = keyframe.y
 		local_alpha = keyframe.alpha
-		
-		if self.current_keyframe == "start":
-			dest_edge = "end"
-		else:
-			dest_edge = "start"
 
-		# update dest_edge keyframe
+		# update clip end values
 		self.keyframes[dest_edge].height = local_height
 		self.keyframes[dest_edge].width = local_width
 		self.keyframes[dest_edge].x = local_x
 		self.keyframes[dest_edge].y = local_y
 		self.keyframes[dest_edge].alpha = local_alpha
 
+		# visualizzo i dati
+		self.set_StartEnd_values()
+
+	def on_cpyToEndButton_clicked(self, widget, *args):
+		print "on_cpyToEndButton_clicked"
+		widget_label = widget.get_label()
+		self.cpyButton(widget_label)
+
+	def on_cpyToStartButton_clicked(self, widget, *args):
+		print "on_cpyToStartButton_clicked"
+		widget_label = widget.get_label()
+		self.cpyButton(widget_label)
 
 	def on_cboSimpleSpeed_changed(self, widget, *args):
 		
@@ -700,19 +705,20 @@ class frmClipProperties(SimpleGtkBuilderApp):
 		# update length
 		self.txtLength.set_text(_("{0} seconds").format(str(round(local_out - local_in, 2))))
 
-	def set_keyframe_dropdown(self):
-		# get the model and iterator of the project type dropdown box
-		model = self.cboKeyFrame.get_model()
-		iter = model.get_iter_first()
-		while True:
-			# get the value of each item in the dropdown
-			value = model.get_value(iter, 0)
+	def set_StartEnd_values(self):
+		keyframe = self.keyframes["start"]
+		self.txtHeightStart.set_value(keyframe.height)
+		self.txtWidthStart.set_value(keyframe.width)
+		self.txtXStart.set_value(keyframe.x)
+		self.txtYStart.set_value(keyframe.y)
+		self.scaleAlphaStart.set_value(keyframe.alpha * 100)
 
-			# set the item as active
-			self.cboKeyFrame.set_active_iter(iter)
-			break
-
-			
+		keyframe = self.keyframes["end"]
+		self.txtHeightEnd.set_value(keyframe.height)
+		self.txtWidthEnd.set_value(keyframe.width)
+		self.txtXEnd.set_value(keyframe.x)
+		self.txtYEnd.set_value(keyframe.y)
+		self.scaleAlphaEnd.set_value(keyframe.alpha * 100)
 			
 	def set_speed_dropdown(self):
 		
@@ -762,12 +768,7 @@ class frmClipProperties(SimpleGtkBuilderApp):
 				# collapse simple, expand advanced
 				self.expanderSimple.set_expanded(False)
 				self.expanderAdvanced.set_expanded(True)
-				break
-			
-				
-			
-			
-
+				break			
 
 	def on_btnResetSpeed_clicked(self, widget, *args):
 		print "on_btnResetSpeed_clicked"
@@ -883,14 +884,20 @@ class frmClipProperties(SimpleGtkBuilderApp):
 		localtxtOut = localtxtOut * original_speed
 		localtxtLength = localtxtLength * original_speed
 
-		localtxtHeight = self.txtHeight.get_value()
-		localtxtWidth = self.txtWidth.get_value()
-		localtxtX = self.txtX.get_value()
-		localtxtY = self.txtY.get_value()
+		localtxtHeightStart = self.txtHeightStart.get_value()
+		localtxtWidthStart = self.txtWidthStart.get_value()
+		localtxtXStart = self.txtXStart.get_value()
+		localtxtYStart = self.txtYStart.get_value()
+		localscaleAlphaStart = self.scaleAlphaStart.get_value()
+		localtxtHeightEnd = self.txtHeightEnd.get_value()
+		localtxtWidthEnd = self.txtWidthEnd.get_value()
+		localtxtXEnd = self.txtXEnd.get_value()
+		localtxtYEnd = self.txtYEnd.get_value()
+		localscaleAlphaEnd = self.scaleAlphaEnd.get_value()
+		
 		localcboHAlign = self.cboHAlign.get_active_text().lower()
 		localcboVAlign = self.cboVAlign.get_active_text().lower()
-		localscaleAlpha = self.scaleAlpha.get_value()
-		
+
 		# update clip object
 		clip_object.position_on_track = localspinbtnStart
 		clip_object.play_video = localcboEnableVideo
