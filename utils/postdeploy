@@ -1,4 +1,5 @@
 git clone https://github.com/XXLRay/libreshot.git ~/libreshot
 cd libreshot
 sudo python ./setup.py install
+echo libreshotserver > /etc/hostname
 usermod -aG vboxsf libreshot
