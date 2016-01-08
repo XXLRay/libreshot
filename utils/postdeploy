@@ -1,0 +1,17 @@
+cd 
+mkdir workspace
+git clone https://github.com/XXLRay/libreshot.git ~/workspace/libreshot
+cd libreshot
+sudo python ./setup.py install
+sudo hostname -b libreshotserver
+sudo usermod -aG vboxsf libreshot
+sudo ln /media/sf_libreshot /libreshot
+
+git clone https://github.com/mltframework/mlt.git ~/mlt
+cd ~/mlt
+./configure --swig-languages=python --prefix=/usr --enable-gpl && make
+sudo make install
+cd ~/mlt/src/swig/python/
+sudo cp mlt.py _mlt.so mlt.i /usr/lib/python2.7/
+
+sudo init 6
