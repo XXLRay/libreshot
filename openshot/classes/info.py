@@ -33,10 +33,11 @@ IM   = {'name': u'itomailg', 'email': 'itomailg@gmail.com'}
 JS   = {'name': u'jEsuSdA', 'email': 'info@jesusda.com'}
 FF   = {'name': u'Francesco Fantoni', 'email': 'francesco@hv-a.com'}
 EB   = {'name': u'Emil Berg', 'email': 'emil_berg91@hotmail.com'}
+MM   = {'name': u'Mariano Marini', 'email': 'mariano.marini@mail.com'}
 
 #credits
 CREDITS = {
-    'code'          : [JT, AF, TJ, OG, MA, IM, FF, EB],
+    'code'          : [JT, AF, TJ, OG, MA, IM, FF, EB, MM],
     'artwork'       : [JT, JS],
     'documentation' : [OG, JT, HMC],
     'translation'   : [HMC, OG],
