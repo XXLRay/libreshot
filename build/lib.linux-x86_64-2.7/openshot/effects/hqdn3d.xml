@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE openshot-effect>
+<effect>
+	<title translatable="True">Denoise via hqdn3d</title>
+	<description translatable="True">Denoises a video using the hqdn3d algorithm</description>
+	<icon>hqdn3d.png</icon>
+	<category>Video</category>
+	<service>frei0r.hqdn3d</service>
+
+        <param name="Spatial" type="spinner" title="Spatial" description="Size of the filter window in space">
+                <min>0</min>
+                <max>1</max>
+                <step>0.01</step>
+                <default>0.04</default>
+        </param>
+
+        <param name="Temporal" type="spinner" title="Temporal" description="Size of the filter window in time">
+                <min>0</min>
+                <max>1</max>
+                <step>0.01</step>
+                <default>0.06</default>
+        </param>
+</effect>

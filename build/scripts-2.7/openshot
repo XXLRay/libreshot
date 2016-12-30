@@ -1,0 +1,96 @@
+#!/usr/bin/python
+
+#	OpenShot Video Editor is a program that creates, modifies, and edits video files.
+#   Copyright (C) 2009  TJ, Jonathan Thomas
+#
+#	This file is part of OpenShot Video Editor (http://launchpad.net/openshot/).
+#
+#	OpenShot Video Editor is free software: you can redistribute it and/or modify
+#	it under the terms of the GNU General Public License as published by
+#	the Free Software Foundation, either version 3 of the License, or
+#	(at your option) any later version.
+#
+#	OpenShot Video Editor is distributed in the hope that it will be useful,
+#	but WITHOUT ANY WARRANTY; without even the implied warranty of
+#	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#	GNU General Public License for more details.
+#
+#	You should have received a copy of the GNU General Public License
+#	along with OpenShot Video Editor.  If not, see <http://www.gnu.org/licenses/>.
+
+import os, sys
+
+# get the real location of this launcher file (not the link location)
+realfile = os.path.realpath(__file__)
+realfile_dir = os.path.dirname(os.path.abspath(realfile))
+
+# determine if running from the /openshot/bin folder
+parent_folder_path = os.path.dirname(realfile_dir)
+bin_path = os.path.join(parent_folder_path, 'openshot')
+if os.path.exists(os.path.join(bin_path, 'openshot.py')):
+	# insert this path into the Python path
+	sys.path.insert(0, bin_path)
+	print "Added %s to system path" % bin_path
+else:
+	
+	# determine if running from the /usr/share/openshot folder
+	usr_share_path = os.path.join('/', 'usr', 'share', 'openshot')
+	if os.path.exists(usr_share_path):
+		# insert this path into the Python path
+		sys.path.insert(0, usr_share_path)
+		print "Added %s to system path" % usr_share_path
+		
+# Set the environment variables which allow pulse audio to identify the application
+os.putenv("PULSE_PROP_application.name", "OpenShot")
+os.putenv("PULSE_PROP_application.icon_name", "openshot");
+os.putenv("PULSE_PROP_media.role", "production");		
+
+# If the openshot python code is found in the Python path, then
+# we should be able to import openshot and call the main() method
+
+try:
+	# RUN OPENSHOT (from the openshot/bin folder)
+	from openshot import main
+	main()
+
+except Exception, err1:
+	print ""
+	print "------------------------- ERROR 1 ------------------------------"
+	print "Failed to import 'from openshot import main'"
+	print "Error Message: %s" % err1
+	print "----------------------------------------------------------------"
+	
+	try:
+		# RUN OPENSHOT (from the pyshared installed folder).  Most users 
+		# will launch openshot from this command.
+		from openshot.openshot import main
+		main()
+
+	except Exception, err2:
+		print ""
+		print "------------------------- ERROR 2 ------------------------------"
+		print "Failed to import 'from openshot.openshot import main'"
+		print "Error Message: %s" % err2
+		print "----------------------------------------------------------------"
+		print ""
+		print "OpenShot has failed to import some of the Python files or libraries "
+		print "required for our application to run.  Here are some trouble shooting"
+		print "tips:"
+		print ""
+		print "Tip 1) Check if MLT can be successfully imported in Python.  Run the "
+		print " following commands, and see if any errors are displayed.  If you get "
+		print " an error, you need to investigate the correct way to install MLT."
+		print " NOTE:  Do not type the $ or >> characters in the examples below."
+		print ""
+		print "       $ python"
+		print "       >> import mlt"
+		print "       >> mlt.Factory().init()"
+		print ""
+		print "Tip 2) If MLT is working from the first example, then the next tip is "
+		print " to look at the above error messages very closely, and google for more "
+		print " help.  It's likely the problem is already reported, and maybe there is"
+		print " a simple work-around.  Also, you can search for bugs or report a new "
+		print " bug at https://bugs.launchpad.net/openshot.  Good luck!"
+		print ""
+		
+	

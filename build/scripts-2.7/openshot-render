@@ -1,0 +1,69 @@
+#!/usr/bin/python
+
+#	OpenShot Video Editor is a program that creates, modifies, and edits video files.
+#   Copyright (C) 2009  TJ, Jonathan Thomas
+#
+#	This file is part of OpenShot Video Editor (http://launchpad.net/openshot/).
+#
+#	OpenShot Video Editor is free software: you can redistribute it and/or modify
+#	it under the terms of the GNU General Public License as published by
+#	the Free Software Foundation, either version 3 of the License, or
+#	(at your option) any later version.
+#
+#	OpenShot Video Editor is distributed in the hope that it will be useful,
+#	but WITHOUT ANY WARRANTY; without even the implied warranty of
+#	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#	GNU General Public License for more details.
+#
+#	You should have received a copy of the GNU General Public License
+#	along with OpenShot Video Editor.  If not, see <http://www.gnu.org/licenses/>.
+
+import sys, os
+
+# get the real location of this launcher file (not the link location)
+realfile = os.path.realpath(__file__)
+realfile_dir = os.path.dirname(os.path.abspath(realfile))
+
+# determine if running from the /openshot/bin folder
+parent_folder_path = os.path.dirname(realfile_dir)
+bin_path = os.path.join(parent_folder_path, 'openshot')
+if os.path.exists(os.path.join(bin_path, 'openshot_render.py')):
+	# insert this path into the Python path
+	sys.path.insert(0, bin_path)
+	print "Added %s to system path" % bin_path
+else:
+	
+	# determine if running from the /usr/share/openshot folder
+	usr_share_path = os.path.join('/', 'usr', 'share', 'openshot')
+	if os.path.exists(usr_share_path):
+		# insert this path into the Python path
+		sys.path.insert(0, usr_share_path)
+		print "Added %s to system path" % usr_share_path
+
+
+
+# If the openshot python code is found in the Python path, then
+# we should be able to import openshot and call the main() method
+
+try:
+	# RUN OPENSHOT
+	from openshot_render import main
+	main()
+
+except ImportError:
+	
+	try:
+		# RUN OPENSHOT
+		from openshot.openshot_render import main
+		main()
+
+	except ImportError:
+		# Failed to find the openshot library.  NOTE:  This /bin/openshot/ file
+		# requires that OpenShot be installed in /site-packages or /usr/share/openshot
+		print "-------------------------------------------------------"
+		print "Error:  OpenShot has not been installed in the Python path."
+		print "(Both the site-packages and /usr/share/openshot folders were checked)"
+		print ""
+		print "Use the following command to install OpenShot:"
+		print "  $ sudo python setup.py install"
+		print ""

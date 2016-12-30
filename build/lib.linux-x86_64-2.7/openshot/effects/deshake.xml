@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE openshot-effect>
+<effect>
+	<title translatable="True">DeShake</title>
+	<description translatable="True">Stabilize Video (for wiggly/rolling video)</description>
+	<icon>desake.png</icon>
+	<category>Video</category>
+	<service>vid.stab.desake</service>
+
+	<param name="accuracy" type="spinner" title="Accuracy" description="">
+		<min>1</min>
+		<max>15</max>
+		<step>1</step>
+		<digits>2</digits>
+		<default>4</default>
+	</param>
+
+</effect>
