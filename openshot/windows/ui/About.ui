@@ -1,17 +1,18 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <requires lib="gtk+" version="2.16"/>
   <!-- interface-naming-policy toplevel-contextual -->
   <object class="GtkAboutDialog" id="aboutdialog1">
     <property name="visible">True</property>
+    <property name="can_focus">False</property>
     <property name="border_width">5</property>
-    <property name="title" translatable="yes">About OpenShot</property>
+    <property name="type">popup</property>
+    <property name="title" translatable="yes">About LibreShot</property>
     <property name="resizable">False</property>
     <property name="window_position">center-on-parent</property>
     <property name="icon">icons/openshot.png</property>
     <property name="type_hint">dialog</property>
-    <property name="has_separator">False</property>
-    <property name="program_name">OpenShot</property>
+    <property name="program_name">LibreShot</property>
     <property name="version">Development Version</property>
     <property name="copyright">OpenShot Video Editor is a program that creates, modifies, and edits video files.
     Copyright (C) 2009  Jonathan Thomas
@@ -667,26 +668,28 @@ Andy Finch</property>
     <property name="documenters">Jonathan Thomas</property>
     <property name="artists">Jonathan Thomas</property>
     <property name="logo">../../images/AboutLogo.png</property>
-    <signal name="close" handler="on_aboutdialog1_close"/>
-    <signal name="response" handler="on_aboutdialog1_response"/>
+    <signal name="close" handler="on_aboutdialog1_close" swapped="no"/>
+    <signal name="response" handler="on_aboutdialog1_response" swapped="no"/>
     <child internal-child="vbox">
       <object class="GtkVBox" id="dialog-vbox1">
         <property name="visible">True</property>
-        <property name="orientation">vertical</property>
+        <property name="can_focus">False</property>
         <property name="spacing">2</property>
-        <child>
-          <placeholder/>
-        </child>
         <child internal-child="action_area">
           <object class="GtkHButtonBox" id="dialog-action_area1">
             <property name="visible">True</property>
+            <property name="can_focus">False</property>
             <property name="layout_style">end</property>
           </object>
           <packing>
             <property name="expand">False</property>
+            <property name="fill">True</property>
             <property name="pack_type">end</property>
             <property name="position">0</property>
           </packing>
+        </child>
+        <child>
+          <placeholder/>
         </child>
       </object>
     </child>
