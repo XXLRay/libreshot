@@ -1,13 +1,14 @@
 [Desktop Entry]
-Name=OpenShot Video Editor
+Name=LibreShot Video Editor
 GenericName=Video Editor
-X-GNOME-FullName=OpenShot Video Editor
+X-GNOME-FullName=LibreShot Video Editor
 Comment=Create and edit videos and movies
 Exec=openshot %F
 Terminal=false
 Type=Application
-Icon=openshot
+Icon=libreshot
 Categories=GNOME;GTK;AudioVideo;Video;AudioVideoEditing;
 MimeType=application/vnd.openshot-project;
 X-AppInstall-Package=openshot
 X-Ubuntu-Gettext-Domain=OpenShot
+Name[it_IT]=LibreShot Video Editor

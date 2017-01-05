@@ -1,21 +1,22 @@
 #!/usr/bin/env python
-#	OpenShot Video Editor is a program that creates, modifies, and edits video files.
+#	LibreShot Video Editor is a program that creates, modifies, and edits video files.
 #
-#	This file is part of OpenShot Video Editor (http://launchpad.net/openshot/).
+#	This file is part of LibreShot Video Editor 
+#   Fork of OpenShot (http://launchpad.net/openshot/).
 #   Copyright (C) 2011	TJ, Jonathan Thomas
 #
-#	OpenShot Video Editor is free software: you can redistribute it and/or modify
+#	LibreShot Video Editor is free software: you can redistribute it and/or modify
 #	it under the terms of the GNU General Public License as published by
 #	the Free Software Foundation, either version 3 of the License, or
 #	(at your option) any later version.
 #
-#	OpenShot Video Editor is distributed in the hope that it will be useful,
+#	LibreShot Video Editor is distributed in the hope that it will be useful,
 #	but WITHOUT ANY WARRANTY; without even the implied warranty of
 #	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.	See the
 #	GNU General Public License for more details.
 #
 #	You should have received a copy of the GNU General Public License
-#	along with OpenShot Video Editor.	If not, see <http://www.gnu.org/licenses/>.
+#	along with LibreShot Video Editor.	If not, see <http://www.gnu.org/licenses/>.
 
 import glob, os, sys, subprocess
 from distutils.core import setup
@@ -34,16 +35,16 @@ if not os.getenv("FAKEROOTKEY") == None:
 
 os_files = [
 	 # XDG application description
-	 ('share/applications', ['xdg/openshot.desktop']),
+	 ('share/applications', ['xdg/libreshot.desktop']),
 	 # XDG application icon
-	 ('share/pixmaps', ['xdg/openshot.svg']),
+	 ('share/pixmaps', ['xdg/libreshot.svg']),
 	 # XDG desktop mime types cache
-	 ('share/mime/packages',['xdg/openshot.xml']),
+	 ('share/mime/packages',['xdg/libreshot.xml']),
 	 # launcher (mime.types)
-	 ('lib/mime/packages',['xdg/openshot']),
-	 # man-page ("man 1 openshot")
-	 ('share/man/man1',['docs/openshot.1']),
-	 ('share/man/man1',['docs/openshot-render.1']),
+	 ('lib/mime/packages',['xdg/libreshot']),
+	 # man-page ("man 1 libreshot")
+	 ('share/man/man1',['docs/libreshot.1']),
+	 ('share/man/man1',['docs/libreshot-render.1']),
 ]
 
 # Add all the translations

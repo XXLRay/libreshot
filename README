@@ -1,18 +1,20 @@
+LibreShot is a fork of OpenShot
+
 OpenShot Video Editor is a program that creates, modifies, and edits video files.
 Copyright (C) 2011  Jonathan Thomas
 
-OpenShot Video Editor is free software: you can redistribute it and/or modify
+LibreShot Video Editor is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
 
-OpenShot Video Editor is distributed in the hope that it will be useful,
+LibreShot Video Editor is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with OpenShot Video Editor.  If not, see <http://www.gnu.org/licenses/>.
+along with LibreShot Video Editor.  If not, see <http://www.gnu.org/licenses/>.
 
 
 
@@ -20,10 +22,11 @@ along with OpenShot Video Editor.  If not, see <http://www.gnu.org/licenses/>.
   HOW TO INSTALL
 #################
 
-Because of the many dependencies required to run OpenShot, we have
-created a build wizard to assist you.  Please download the 
-OpenShot Build Wizard (http://www.openshotvideo.com/2008/04/download.html), and 
-run the install.py file.
+You can install LibreShot using a .zip file or thru git.
+In any case go to https://github.com/XXLRay/libreshot
+download a .zip and uncompress it or use git clone https://github.com/XXLRay/libreshot 
+cd libreshot
+As admin run the install.py file.
 
 
 
@@ -31,12 +34,7 @@ run the install.py file.
   INSTRUCTIONS
 #################
 
-Most Linux distributions have already packaged OpenShot.  So the easiest
-way to install is to use your favorite package manager, and install
-the version in your distribution.  However, if you are trying to build
-from source, here are some tips: 
-
-OpenShot Video Editor is programmed in Python, and thus does not need
+LibreShot Video Editor is programmed in Python, and thus does not need
 to be compiled to run.  However, be sure you have the following 
 dependencies in order to run OpenShot successfully: 
 
@@ -47,29 +45,26 @@ dependencies in order to run OpenShot successfully:
 5) Sox audio library
 6) Frei0r video effect library
 7) FFmpeg
+8) python-pygoocanvas
 
-( Download our build wizard to install MLT and all of these dependencies.  The
-  build wizard is located at http://www.openshotvideo.com/2008/04/download.html )
+To run LibreShot from the command line, use the following syntax:
+(be sure to change the path to match the install location of LibreShot)
 
-
-To run OpenShot from the command line, use the following syntax:
-(be sure the change the path to match the install location of OpenShot)
-
-$ cd /home/USER/openshot/bin
-$ ./openshot
+$ cd /home/USER/libreshot/bin
+$ ./libreshot
 
 
 #################
   HOW TO INSTALL
 #################
 
-If you would like to install OpenShot, use this command:
+If you would like to install LibreShot, use this command:
 
 $ sudo python setup.py install
 
-Installing OpenShot using this command does a few extra things that
+Installing LibreShot using this command does a few extra things that
 the build wizard doesn't do.  It adds MIME Types, adds an icon to your
-Application menu, registers icons, adds a /usr/bin/openshot command, and
+Application menu, registers icons, adds a /usr/bin/libreshot command, and
 copies all the code files to the /site-packages/ folder.
 
 
@@ -115,20 +110,14 @@ Here is a tutorial of the current development features:
     WEBSITES
 #################
 
-http://www.openshotvideo.com/  (PROJECT WEBSITE and BLOG)
-http://launchpad.net/openshot/ (SOURCE CODE, BUG TRACKER, TRANSLATIONS)
-http://freshmeat.net/projects/openshot-video-editor/
-https://sourceforge.net/projects/openshotvideo/
-https://www.ohloh.net/p/openshot-video-editor/
-
+https://github.com/XXLRay/libreshot
 
 
 ####################
     REPORT A BUG
 ####################
 
-https://bugs.launchpad.net/openshot
-
+https://github.com/XXLRay/libreshot/issues
 
 
 ####################
@@ -143,8 +132,7 @@ https://translations.launchpad.net/openshot
    ASK A QUESTION  
 ####################
 
-https://answers.launchpad.net/openshot
-
+https://github.com/XXLRay/libreshot
 
 
 
