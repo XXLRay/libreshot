@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<interface>
+  <requires lib="gtk+" version="2.16"/>
+  <!-- interface-naming-policy toplevel-contextual -->
+  <object class="GtkMenu" id="mnuRotateSubMenuPopup">
+    <property name="visible">True</property>
+    <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK | GDK_STRUCTURE_MASK</property>
+    <child>
+      <object class="GtkImageMenuItem" id="mnu_no_rotate">
+        <property name="label" translatable="yes">No Rotation</property>
+        <property name="visible">True</property>
+        <property name="events">GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK | GDK_STRUCTURE_MASK</property>
+        <property name="use_stock">False</property>
+        <property name="accel_group">accelgroup1</property>
+        <signal name="activate" handler="on_mnuRotate_activate"/>
+        <property name="image">gtk-clear</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkSeparatorMenuItem" id="menuitem6a">
+        <property name="visible">True</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkImageMenuItem" id="mnu_rotate_right_90">
+        <property name="label" translatable="yes">Rotate 90 (Right)</property>
+        <property name="visible">True</property>
+        <property name="events">GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK | GDK_STRUCTURE_MASK</property>
+        <property name="use_stock">False</property>
+        <property name="accel_group">accelgroup1</property>
+        <signal name="activate" handler="on_mnuRotate_activate"/>
+      </object>
+    </child>
+    <child>
+      <object class="GtkImageMenuItem" id="mnu_rotate_left_90">
+        <property name="label" translatable="yes">Rotate 90 (Left)</property>
+        <property name="visible">True</property>
+        <property name="events">GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK | GDK_STRUCTURE_MASK</property>
+        <property name="use_stock">False</property>
+        <property name="accel_group">accelgroup1</property>
+        <signal name="activate" handler="on_mnuRotate_activate"/>
+      </object>
+    </child>
+    <child>
+      <object class="GtkImageMenuItem" id="mnu_rotate_180">
+        <property name="label" translatable="yes">Rotate 180 (Flip)</property>
+        <property name="visible">True</property>
+        <property name="events">GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK | GDK_STRUCTURE_MASK</property>
+        <property name="use_stock">False</property>
+        <property name="accel_group">accelgroup1</property>
+        <signal name="activate" handler="on_mnuRotate_activate"/>
+      </object>
+    </child>
+  </object>
+  <object class="GtkAccelGroup" id="accelgroup1"/>
+  <object class="GtkImage" id="gtk-clear">
+    <property name="visible">True</property>
+    <property name="stock">gtk-clear</property>
+  </object>
+  
+</interface>

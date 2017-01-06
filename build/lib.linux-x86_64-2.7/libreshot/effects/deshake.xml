@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE openshot-effect>
+<effect>
+	<title translatable="True">DeShake</title>
+	<description translatable="True">Stabilize Video (for wiggly/rolling video)</description>
+	<icon>deshake.png</icon>
+	<category>Video</category>
+	<service>vid.stab.desake</service>
+
+	<param name="shakiness" type="spinner" title="Shakiness" description="">
+		<min>1</min>
+		<max>10</max>
+		<step>1</step>
+		<digits>2</digits>
+		<default>4</default>
+	</param>
+
+	<param name="accuracy" type="spinner" title="Accuracy" description="">
+		<min>1</min>
+		<max>15</max>
+		<step>1</step>
+		<digits>2</digits>
+		<default>4</default>
+	</param>
+
+	<param name="stepsize" type="spinner" title="Step's Size" description="">
+		<min>0</min>
+		<max>100</max>
+		<step>1</step>
+		<digits>3</digits>
+		<default>6</default>
+	</param>
+
+</effect>

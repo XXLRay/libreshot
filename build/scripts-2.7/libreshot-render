@@ -1,0 +1,69 @@
+#!/usr/bin/python
+#	LibreShot Video Editor is a program that creates, modifies, and edits video files.
+#   It's a fork from OpenShot
+#   Copyright (C) 2009  TJ, Jonathan Thomas
+#
+#	This file is part of OpenShot Video Editor (http://launchpad.net/openshot/).
+#
+#	LibreShot Video Editor is free software: you can redistribute it and/or modify
+#	it under the terms of the GNU General Public License as published by
+#	the Free Software Foundation, either version 3 of the License, or
+#	(at your option) any later version.
+#
+#	LibreShot Video Editor is distributed in the hope that it will be useful,
+#	but WITHOUT ANY WARRANTY; without even the implied warranty of
+#	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#	GNU General Public License for more details.
+#
+#	You should have received a copy of the GNU General Public License
+#	along with LibreShot Video Editor.  If not, see <http://www.gnu.org/licenses/>.
+
+import sys, os
+
+# get the real location of this launcher file (not the link location)
+realfile = os.path.realpath(__file__)
+realfile_dir = os.path.dirname(os.path.abspath(realfile))
+
+# determine if running from the /libreshot/bin folder
+parent_folder_path = os.path.dirname(realfile_dir)
+bin_path = os.path.join(parent_folder_path, 'libreshot')
+if os.path.exists(os.path.join(bin_path, 'libreshot_render.py')):
+	# insert this path into the Python path
+	sys.path.insert(0, bin_path)
+	print "Added %s to system path" % bin_path
+else:
+	
+	# determine if running from the /usr/share/libreshot folder
+	usr_share_path = os.path.join('/', 'usr', 'share', 'libreshot')
+	if os.path.exists(usr_share_path):
+		# insert this path into the Python path
+		sys.path.insert(0, usr_share_path)
+		print "Added %s to system path" % usr_share_path
+
+
+
+# If the openshot python code is found in the Python path, then
+# we should be able to import libreshot and call the main() method
+
+try:
+	# RUN LIBRESHOT
+	from libreshot_render import main
+	main()
+
+except ImportError:
+	
+	try:
+		# RUN LIBRESHOT
+		from libreshot.libreshot_render import main
+		main()
+
+	except ImportError:
+		# Failed to find the libreshot library.  NOTE:  This /bin/libreshot/ file
+		# requires that LibreShot be installed in /site-packages or /usr/share/libreshot
+		print "-------------------------------------------------------"
+		print "Error:  LibreShot has not been installed in the Python path."
+		print "(Both the site-packages and /usr/share/libreshot folders were checked)"
+		print ""
+		print "Use the following command to install LibreShot:"
+		print "  $ sudo python setup.py install"
+		print ""

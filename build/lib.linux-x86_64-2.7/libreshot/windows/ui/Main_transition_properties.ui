@@ -1,0 +1,110 @@
+<?xml version="1.0"?>
+<interface>
+  <requires lib="gtk+" version="2.16"/>
+  <!-- interface-naming-policy toplevel-contextual -->
+  <object class="GtkMenu" id="mnuTransitionPopup">
+    <property name="visible">True</property>
+    <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK | GDK_STRUCTURE_MASK</property>
+    <child>
+      <object class="GtkImageMenuItem" id="mnuDuplicate1">
+        <property name="label" translatable="yes">Duplicate</property>
+        <property name="visible">True</property>
+        <property name="tooltip_text" translatable="yes">Make a copy of this transition</property>
+        <property name="use_stock">False</property>
+        <property name="accel_group">accelgroup1</property>
+        <signal name="activate" handler="on_mnuDuplicate_activate"/>
+        <property name="image">gtk-copy</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkSeparatorMenuItem" id="menuitem12">
+        <property name="visible">True</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkImageMenuItem" id="mnuReverseTransition">
+        <property name="label" translatable="yes">Switch Direction</property>
+        <property name="visible">True</property>
+        <property name="use_stock">False</property>
+        <property name="accel_group">accelgroup1</property>
+        <signal name="activate" handler="on_mnuReverseMarker_activate"/>
+        <property name="image">gtk-refresh</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkImageMenuItem" id="mnuMask">
+        <property name="label" translatable="yes">Convert to Mask</property>
+        <property name="visible">True</property>
+        <property name="use_stock">False</property>
+        <property name="accel_group">accelgroup1</property>
+        <signal name="activate" handler="on_mnuMask_activate"/>
+        <property name="image">gtk-execute</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkImageMenuItem" id="mnuShiftTransitions">
+        <property name="label" translatable="yes">Shift Transitions</property>
+        <property name="visible">True</property>
+        <property name="use_stock">False</property>
+        <property name="accel_group">accelgroup1</property>
+        <signal name="activate" handler="on_mnuShiftTransitions_activate"/>
+        <property name="image">gtk-goto-last</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkSeparatorMenuItem" id="menuitem13">
+        <property name="visible">True</property>
+      </object>
+    </child>
+    
+    <child>
+      <object class="GtkImageMenuItem" id="mnuRemoveTransition">
+        <property name="label" translatable="yes">Remove Transition</property>
+        <property name="visible">True</property>
+        <property name="use_stock">False</property>
+        <property name="accel_group">accelgroup1</property>
+        <signal name="activate" handler="on_mnuRemoveTransition_activate"/>
+        <property name="image">gtk-remove</property>
+      </object>
+    </child>
+
+    <child>
+      <object class="GtkSeparatorMenuItem" id="menuitem14">
+        <property name="visible">True</property>
+      </object>
+    </child>
+   
+    <child>
+      <object class="GtkImageMenuItem" id="mnuTransitionProperties">
+        <property name="label">gtk-properties</property>
+        <property name="visible">True</property>
+        <property name="use_underline">True</property>
+        <property name="use_stock">True</property>
+        <property name="accel_group">accelgroup1</property>
+        <signal name="activate" handler="on_mnuTransitionProperties_activate"/>
+      </object>
+    </child>
+  </object>
+  <object class="GtkAccelGroup" id="accelgroup1"/>
+  
+  <object class="GtkImage" id="gtk-copy">
+    <property name="visible">True</property>
+    <property name="stock">gtk-copy</property>
+  </object>
+  <object class="GtkImage" id="gtk-refresh">
+    <property name="visible">True</property>
+    <property name="stock">gtk-refresh</property>
+  </object>
+  <object class="GtkImage" id="gtk-execute">
+    <property name="visible">True</property>
+    <property name="stock">gtk-execute</property>
+  </object>
+  <object class="GtkImage" id="gtk-goto-last">
+    <property name="visible">True</property>
+    <property name="stock">gtk-goto-last</property>
+  </object>
+  <object class="GtkImage" id="gtk-remove">
+    <property name="visible">True</property>
+    <property name="stock">gtk-remove</property>
+  </object>
+</interface>

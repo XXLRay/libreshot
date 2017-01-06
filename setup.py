@@ -2,7 +2,7 @@
 #	LibreShot Video Editor is a program that creates, modifies, and edits video files.
 #
 #	This file is part of LibreShot Video Editor 
-#   Fork of OpenShot (http://launchpad.net/openshot/).
+#   Fork of OpenShot (http://launchpad.net/libreshot/).
 #   Copyright (C) 2011	TJ, Jonathan Thomas
 #
 #	LibreShot Video Editor is free software: you can redistribute it and/or modify
@@ -22,13 +22,13 @@ import glob, os, sys, subprocess
 from distutils.core import setup
 
 print "Execution path: %s" % os.path.abspath(__file__)
-from openshot.classes import info
+from libreshot.classes import info
 
 # Boolean: running as root?
 ROOT = os.geteuid() == 0
 # For Debian packaging it could be a fakeroot so reset flag to prevent execution of
 # system update services for Mime and Desktop registrations.
-# The debian/openshot.postinst script must do those.
+# The debian/libreshot.postinst script must do those.
 if not os.getenv("FAKEROOTKEY") == None:
 	print "NOTICE: Detected execution in a FakeRoot so disabling calls to system update services."
 	ROOT = False
@@ -49,20 +49,20 @@ os_files = [
 
 # Add all the translations
 locale_files = []
-for filepath in glob.glob("openshot/locale/*/LC_MESSAGES/*"):
-	filepath = filepath.replace('openshot/', '')
+for filepath in glob.glob("libreshot/locale/*/LC_MESSAGES/*"):
+	filepath = filepath.replace('libreshot/', '')
 	locale_files.append(filepath)
 	
 
 # Call the main Distutils setup command
 # -------------------------------------
 dist = setup(
-	 scripts	= ['bin/openshot','bin/openshot-render'],
-	 packages	 = ['openshot', 'openshot.widgets', 'openshot.classes', 'openshot.language', 'openshot.windows', 'openshot.uploads', 'openshot.uploads.vimeo', 'openshot.uploads.vimeo.httplib2', 'openshot.uploads.vimeo.httplib2wrap', 'openshot.uploads.vimeo.oauth2', 'openshot.uploads.vimeo.oauth2.clients', 'openshot.uploads.youtube', 'openshot.uploads.youtube.atom', 'openshot.uploads.youtube.gdata', 'openshot.uploads.youtube.gdata.geo', 'openshot.uploads.youtube.gdata.media', 'openshot.uploads.youtube.gdata.oauth', 'openshot.uploads.youtube.gdata.opensearch', 'openshot.uploads.youtube.gdata.tlslite', 'openshot.uploads.youtube.gdata.tlslite.integration', 'openshot.uploads.youtube.gdata.tlslite.utils', 'openshot.uploads.youtube.gdata.youtube'],
+	 scripts	= ['bin/libreshot','bin/libreshot-render'],
+	 packages	 = ['libreshot', 'libreshot.widgets', 'libreshot.classes', 'libreshot.language', 'libreshot.windows', 'libreshot.uploads', 'libreshot.uploads.vimeo', 'libreshot.uploads.vimeo.httplib2', 'libreshot.uploads.vimeo.httplib2wrap', 'libreshot.uploads.vimeo.oauth2', 'libreshot.uploads.vimeo.oauth2.clients', 'libreshot.uploads.youtube', 'libreshot.uploads.youtube.atom', 'libreshot.uploads.youtube.gdata', 'libreshot.uploads.youtube.gdata.geo', 'libreshot.uploads.youtube.gdata.media', 'libreshot.uploads.youtube.gdata.oauth', 'libreshot.uploads.youtube.gdata.opensearch', 'libreshot.uploads.youtube.gdata.tlslite', 'libreshot.uploads.youtube.gdata.tlslite.integration', 'libreshot.uploads.youtube.gdata.tlslite.utils', 'libreshot.uploads.youtube.gdata.youtube'],
 	 package_data = {
-	 				'openshot' : ['export_presets/*', 'images/*', 'locale/OpenShot/*', 'locale/README', 'profiles/*', 'themes/*/*.png', 'themes/*/*.xml', 'themes/*/icons/*.png', 'titles/*/*.svg', 'transitions/icons/medium/*.png', 'transitions/icons/small/*.png', 'transitions/*.pgm', 'transitions/*.png', 'transitions/*.svg', 'effects/icons/medium/*.png', 'effects/icons/small/*.png', 'effects/*.xml', 'blender/blend/*.blend', 'blender/icons/*.png', 'blender/earth/*.jpg', 'blender/scripts/*.py', 'blender/*.xml'] + locale_files,
-	 				'openshot.windows' : ['ui/*.ui', 'ui/icons/*'],
-	 				'openshot.uploads' : ['logos/*.png'],
+	 				'libreshot' : ['export_presets/*', 'images/*', 'locale/LibreShot/*', 'locale/README', 'profiles/*', 'themes/*/*.png', 'themes/*/*.xml', 'themes/*/icons/*.png', 'titles/*/*.svg', 'transitions/icons/medium/*.png', 'transitions/icons/small/*.png', 'transitions/*.pgm', 'transitions/*.png', 'transitions/*.svg', 'effects/icons/medium/*.png', 'effects/icons/small/*.png', 'effects/*.xml', 'blender/blend/*.blend', 'blender/icons/*.png', 'blender/earth/*.jpg', 'blender/scripts/*.py', 'blender/*.xml'] + locale_files,
+	 				'libreshot.windows' : ['ui/*.ui', 'ui/icons/*'],
+	 				'libreshot.uploads' : ['logos/*.png'],
 	 				},
 	 data_files = os_files,
 	 **info.SETUP
@@ -95,5 +95,5 @@ if ROOT and dist != None:
 		sys.stderr.write(FAILED)
 	sys.stdout.write("\n-----------------------------------------------")
 	sys.stdout.write("\nInstallation Finished!")
-	sys.stdout.write("\nRun OpenShot by typing 'openshot' or through the Applications menu.")
+	sys.stdout.write("\nRun LibreShot by typing 'libreshot' or through the Applications menu.")
 	sys.stdout.write("\n-----------------------------------------------\n")
