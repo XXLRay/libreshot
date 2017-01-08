@@ -15,6 +15,7 @@
     <property name="program_name">LibreShot</property>
     <property name="version">Development Version</property>
     <property name="copyright">LibreShot Video Editor is a program that creates, modifies, and edits video files.
+    It's a fork from OpenShot
     Copyright (C) 2009  Jonathan Thomas
 
     This program is free software: you can redistribute it and/or modify
