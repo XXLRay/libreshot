@@ -18,7 +18,7 @@
 #	along with LibreShot Video Editor.  If not, see <http://www.gnu.org/licenses/>.
 
 
-import os
+import os, subprocess
 import gtk
 import xml.dom.minidom as xml
 
@@ -27,7 +27,8 @@ from windows.SimpleGtkBuilderApp import SimpleGtkBuilderApp
 from xdg.IconTheme import *
 
 # init the foriegn language
-import language.Language_Init as Language_Init
+from language import Language_Init
+# import language.Language_Init as Language_Init
 
 class PreferencesMgr(SimpleGtkBuilderApp):
 	
@@ -52,6 +53,16 @@ class PreferencesMgr(SimpleGtkBuilderApp):
 		for dir in os.listdir(self.project.THEMES_DIR):
 			self.cmbThemes.append_text(dir)
 		
+		#populate the languages
+		self.cmbLanguage.append_text(_("default"))
+		p = subprocess.Popen("locale -a", stdout=subprocess.PIPE, shell=True)
+		langlist = p.communicate()
+		for langitem in langlist:
+		    if bool(langitem):
+		    	avlblang = langitem.split()
+		    	for snglang in avlblang:
+			    	self.cmbLanguage.append_text(snglang)
+
 		# populate output mode combo
 		for output_mode in ["sdl", "sdl_preview"]:
 			self.cmbOutputModes.append_text(output_mode)
@@ -74,7 +85,6 @@ class PreferencesMgr(SimpleGtkBuilderApp):
 		# populate stock icons combo
 		for use_stock in [_("Yes"), _("No")]:
 			self.cmbUseStockIcons.append_text(use_stock)
-
 			
 		#populate the codecs & formats
 		self.VCodecList = gtk.ListStore(str)
@@ -90,7 +100,6 @@ class PreferencesMgr(SimpleGtkBuilderApp):
 		tree.treeviewAddGeneralTextColumn(self.tvFormats,_('Formats'),0)	
 		self.populate_codecs()
 		
-			
 		#populate form objects
 		self.valImageLength.set_value(float(self.form.settings.general["imported_image_length"].replace(",",".")))
 		self.valHistoryStackSize.set_value(float(self.form.settings.general["max_history_size"]))
@@ -196,9 +205,6 @@ class PreferencesMgr(SimpleGtkBuilderApp):
 
 		self.populate_codecs()
 		
-
-		
-		
 	def on_btnClose_clicked(self, widget, *args):
 		#write the values from the form to the dictionary objects
 		self.form.settings.general["imported_image_length"] = self.valImageLength.get_text().replace(",",".")
@@ -236,7 +242,6 @@ class PreferencesMgr(SimpleGtkBuilderApp):
 		
 		_ = self._
 		use_stock_icons = self.cmbUseStockIcons.get_active_text()
-		
 		if use_stock_icons == _("Yes"):
 			self.form.settings.general["use_stock_icons"] = "Yes"
 		else:
@@ -269,7 +274,6 @@ class PreferencesMgr(SimpleGtkBuilderApp):
 		self.form.on_btnTransFilterAll_toggled(widget)
 		self.form.on_btnAllEffects_toggled(widget)
 
-
 	def on_cmbThemes_changed(self, widget, *args):
 		
 		self.form.settings.general["default_theme"] = self.cmbThemes.get_active_text()
@@ -282,7 +286,21 @@ class PreferencesMgr(SimpleGtkBuilderApp):
 		self.form.update_icon_theme()
 		self.form.refresh()
 
-
+	def on_cmbLanguage_changed(self, widget, *args):
+		print "on_cmbLanguage_changed"
+		langs = self.cmbLanguage.get_active_text()
+		if langs == _("default"):
+			if os.path.isfile("language.conf"):
+				print "Remove language file"
+				os.remove("language.conf")
+			else:
+				print "No language file found"
+		else:
+			f = open("language.conf", "w")
+			f.write(langs)
+			f.close()
+			print "Language file written"
+		
 	def on_btnManageProfiles_clicked(self, widget, *args):
 		print "on_btnManageProfiles_clicked"
 		from windows import Profiles

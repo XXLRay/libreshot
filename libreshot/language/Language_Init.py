@@ -70,6 +70,15 @@ class Translator:
 		"""Constructor"""  
 		self.project = project
 		
+		try:
+			f = open(os.getcwd()+"/language.conf", "rU")
+			setlang = f.read()
+			f.close
+			os.environ["LANG"] = setlang
+		except IOError:
+			setlang = ''
+			pass
+			
 		# Setup foreign language support
 		langs = []
 		lc, encoding = locale.getlocale(locale.LC_MESSAGES)
@@ -81,7 +90,7 @@ class Translator:
 			langs += language.split(":")
 
 		# Set locale specific settings
-		locale.setlocale(locale.LC_ALL)
+		locale.setlocale(locale.LC_ALL, setlang)
 		locale.bindtextdomain("LibreShot", self.project.LOCALE_DIR)
 		locale.bind_textdomain_codeset("LibreShot", "UTF-8")
 

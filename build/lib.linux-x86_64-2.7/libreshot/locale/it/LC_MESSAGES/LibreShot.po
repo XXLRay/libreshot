@@ -4732,6 +4732,10 @@ msgstr "Copia su inizio"
 msgid "Copy to end"
 msgstr "Copia su fine"
 
+#: deshake.xml: 10(para)
+msgid "Shakiness"
+msgstr "Squotimento"
+
 #~ msgid "2"
 #~ msgstr "2"
 
